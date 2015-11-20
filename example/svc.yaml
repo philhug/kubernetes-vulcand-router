@@ -11,8 +11,11 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 80
-    nodePort: 31901
+    targetPort: vulcand-http
+    protocol: TCP
+  - name: https
+    port: 443
+    targetPort: vulcand-https
     protocol: TCP
   selector:
-    name: k8s-http-router
+    name: k8s-vulcand-router

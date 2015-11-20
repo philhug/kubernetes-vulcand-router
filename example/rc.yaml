@@ -18,10 +18,10 @@ spec:
     spec:
       containers:
       - name: relay
-        image: nordstrom/kubernetes-vulcand-router:0.1.0-dev
+        image: nordstrom/kubernetes-vulcand-router:0.1.3-dev
         imagePullPolicy: Always
         args: 
-          - "-apiserver=http://25.0.0.1"
+          - "-apiserver=https://kubernetes:443"
           - "-vulcand=http://127.0.0.1:8182"
       - name: router
         image: mailgun/vulcand:v0.8.0-beta.2
@@ -37,6 +37,8 @@ spec:
         ports:
           - containerPort: 8181
             name: vulcand-http
+          - containerPort: 443
+            name: vulcand-https
           - containerPort: 8182
             name: vulcand-api
         livenessProbe:
