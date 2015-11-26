@@ -118,7 +118,7 @@ func getEndpointsForService(endpointsStore kubeCache.Store, s *kubeAPI.Service) 
 		return nil, fmt.Errorf("Error getting endpoints object from endpoints store - %v", err)
 	}
 	if !exists {
-		log.WithFields(log.Fields{"name": s.Name, "namespace": s.Namespace}).Warn("Unable to find service for endpoint")
+		log.WithFields(log.Fields{"name": s.Name, "namespace": s.Namespace}).Warn("Unable to find endpoint for service")
 		return nil, nil
 	}
 	if e, ok = obj.(*kubeAPI.Endpoints); !ok {
